@@ -22,8 +22,6 @@ apt-get -y install wget
 ```
 执行脚本
 ```
-bash <(curl -L -s https://github.com/quniu/v2ui/raw/master/v2-ui.sh)
-# 或者
 wget -N --no-check-certificate https://raw.githubusercontent.com/quniu/v2ui/master/install.sh
 chmod +x install.sh
 ./install.sh
