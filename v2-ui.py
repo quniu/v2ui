@@ -16,7 +16,7 @@ from util import config
 
 
 def logging_init():
-    logging.basicConfig(filename='/etc/v2-ui/v2-ui.log',
+    logging.basicConfig(filename='/etc/v2ui/v2-ui.log',
                         datefmt='%Y-%m-%d %H:%M:%S',
                         format='%(asctime)s-%(name)s-%(levelname)s-%(message)s',
                         level=logging.WARN)

@@ -46,7 +46,7 @@ v2-ui uninstall        # 卸载 v2-ui 面板
 ```
 
 ## 数据备份与迁移
-面板所有数据包括账号信息等都存在 /etc/v2-ui/v2-ui.db 中，只要备份此文件即可。
+面板所有数据包括账号信息等都存在 /etc/v2ui/v2-ui.db 中，只要备份此文件即可。
 
 在新服务器安装了面板之后，先关闭面板，再将备份的文件覆盖新安装的，最后启动面板即可。
 
@@ -59,8 +59,8 @@ v2-ui uninstall        # 卸载 v2-ui 面板
 ```
 systemctl stop v2-ui
 systemctl disable v2-ui
-rm /usr/local/v2-ui/ -rf
-rm /etc/v2-ui/ -rf
+rm /usr/local/v2ui-linux/ -rf
+rm /etc/v2ui/ -rf
 rm /etc/systemd/system/v2-ui.service -f
 systemctl daemon-reload
 ```
@@ -68,13 +68,13 @@ systemctl daemon-reload
 ## 忘记用户名和密码
 使用以下命令重置用户名和密码，默认都为 admin
 ```
-/usr/local/v2-ui/v2-ui resetuser
+/usr/local/v2ui-linux/v2-ui resetuser
 ```
 ## 面板设置修改错误导致面板无法启动
 使用以下命令重置所有面板设置，默认面板端口修改为 65432，其它的也会重置为默认值
 
 ```
-/usr/local/v2-ui/v2-ui resetconfig
+/usr/local/v2ui-linux/v2-ui resetconfig
 ```
 
 注意，这个命令不会重置用户名和密码。

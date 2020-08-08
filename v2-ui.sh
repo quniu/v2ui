@@ -131,8 +131,8 @@ uninstall() {
     rm /etc/systemd/system/v2-ui.service -f
     systemctl daemon-reload
     systemctl reset-failed
-    rm /etc/v2-ui/ -rf
-    rm /usr/local/v2-ui/ -rf
+    rm /etc/v2ui/ -rf
+    rm /usr/local/v2ui-linux/ -rf
 
     echo ""
     echo -e "卸载成功，如果你想删除此脚本，则退出脚本后运行 ${green}rm /usr/bin/v2-ui -f${plain} 进行删除"
@@ -151,7 +151,7 @@ reset_user() {
         fi
         return 0
     fi
-    /usr/local/v2-ui/v2-ui resetuser
+    /usr/local/v2ui-linux/v2-ui resetuser
     echo -e "用户名和密码已重置为 ${green}admin${plain}，现在请重启面板"
     confirm_restart
 }
@@ -164,7 +164,7 @@ reset_config() {
         fi
         return 0
     fi
-    /usr/local/v2-ui/v2-ui resetconfig
+    /usr/local/v2ui-linux/v2-ui resetconfig
     echo -e "所有面板已重置为默认值，现在请重启面板，并使用默认的 ${green}65432${plain} 端口访问面板"
     confirm_restart
 }
@@ -175,7 +175,7 @@ set_port() {
         echo -e "${yellow}已取消${plain}"
         before_show_menu
     else
-        /usr/local/v2-ui/v2-ui setport ${port}
+        /usr/local/v2ui-linux/v2-ui setport ${port}
         echo -e "设置端口完毕，现在请重启面板，并使用新设置的端口 ${green}${port}${plain} 访问面板"
         confirm_restart
     fi
@@ -272,7 +272,7 @@ disable() {
 
 show_log() {
     echo && echo -n -e "面板使用过程中可能会输出许多 WARNING 日志，如果面板使用没有什么问题的话，那就没有问题，按回车继续: " && read temp
-    tail -500f /etc/v2-ui/v2-ui.log
+    tail -500f /etc/v2ui/v2-ui.log
     if [[ $# == 0 ]]; then
         before_show_menu
     fi
