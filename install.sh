@@ -95,8 +95,8 @@ close_firewall() {
 install_v2-ui() {
     systemctl stop v2-ui
     cd /usr/local/
-    if [[ -e /usr/local/v2-ui/ ]]; then
-        rm /usr/local/v2-ui/ -rf
+    if [[ -e /usr/local/v2ui-linux/ ]]; then
+        rm /usr/local/v2ui-linux/ -rf
     fi
     last_version=$(curl -Ls "https://api.github.com/repos/quniu/v2ui/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
     echo -e "检测到v2-ui最新版本：${last_version}，开始安装"
@@ -107,13 +107,13 @@ install_v2-ui() {
     fi
     tar zxvf v2ui-linux.tar.gz
     rm v2ui-linux.tar.gz -f
-    cd v2-ui
+    cd v2ui-linux
     chmod +x v2-ui
     cp -f v2-ui.service /etc/systemd/system/
     systemctl daemon-reload
     systemctl enable v2-ui
     systemctl start v2-ui
-    echo -e "${green}v2-ui v${last_version}${plain} 安装完成，面板已启动，"
+    echo -e "${green}v2-ui ${last_version}${plain} 安装完成，面板已启动，"
     echo -e ""
     echo -e "如果是全新安装，默认网页端口为 ${green}65432${plain}，用户名和密码默认都是 ${green}admin${plain}"
     echo -e "请自行确保此端口没有被其他程序占用，${yellow}并且确保 65432 端口已放行${plain}"
