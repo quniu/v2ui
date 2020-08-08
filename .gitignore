@@ -1,0 +1,7 @@
+npm-debug.log
+yarn-error.log
+.idea/
+.DS_Store
+*.swp
+*.sw*
+*.un~
